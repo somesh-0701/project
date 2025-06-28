@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Checklist</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+/*            background-color: #f4f4f9;*/
+            min-height: 100vh;
+            padding: 120px;
+             background: url('images/2131038.jpg') no-repeat center center/cover;
+        }
+
+        /* Checklist Container */
+        .checklist {
+            width: 40%;
+            padding: 20px;
+/*            background: #a8997c;*/
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            background: transparent;
+        }
+
+        .checklist h1 {
+            font-size: 28px;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            background: transparent;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .item:hover {
+            background: #e8f0fe;
+            transform: translateX(5px);
+        }
+
+        input[type="checkbox"] {
+            transform: scale(1.5);
+            cursor: pointer;
+        }
+
+        /* Vertical Progress Bar Container */
+        .progress-container {
+            width: 10%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+/*            background: transparent;*/
+            padding: 20px;
+            background: lightcyan;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            height: 80vh;
+        }
+
+        .progress-container h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .progress-bar {
+            width: 30px;
+            height: 100%;
+            background: #eee;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress {
+            width: 100%;
+            height: 0;
+            background: #4caf50;
+            position: absolute;
+            bottom: 0;
+            transition: height 0.3s ease-in-out;
+        }
+
+        #progress-text {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #555;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Left: Checklist -->
+    <div class="checklist">
+        <h1>Emergency Essentials</h1>
+        <div class="item">
+            <span>Food</span>
+            <input type="checkbox" class="progress-check">
+        </div>
+        <div class="item">
+            <span>Water</span>
+            <input type="checkbox" class="progress-check">
+        </div>
+        <div class="item">
+            <span>Torch</span>
+            <input type="checkbox" class="progress-check">
+        </div>
+        <div class="item">
+            <span>Napkins</span>
+            <input type="checkbox" class="progress-check">
+        </div>
+        <div class="item">
+            <span>First Aid Kit</span>
+            <input type="checkbox" class="progress-check">
+        </div>
+        <div class="item">
+            <span>Clothes</span>
+            <input type="checkbox" class="progress-check">
+        </div>
+        <div class="item">
+            <span>Phone Charger</span>
+            <input type="checkbox" class="progress-check">
+        </div>
+        <div class="item">
+            <span>Batteries</span>
+            <input type="checkbox" class="progress-check">
+        </div>
+        <div class="item">
+            <span>Blankets</span>
+            <input type="checkbox" class="progress-check">
+        </div>
+        <div class="item">
+            <span>Important Documents</span>
+            <input type="checkbox" class="progress-check">
+        </div>
+        <div class="item">
+            <span>Cash</span>
+            <input type="checkbox" class="progress-check">
+        </div>
+    </div>
+
+    <!-- Right: Vertical Progress Bar -->
+    <div class="progress-container">
+        <h2>Progress</h2>
+        <div class="progress-bar">
+            <div class="progress" id="progress-bar"></div>
+        </div>
+        <p id="progress-text">0% Completed</p>
+    </div>
+
+    <!-- JavaScript for Vertical Progress Bar -->
+    <script>
+        const checkboxes = document.querySelectorAll('.progress-check');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        
+        const totalCheckboxes = checkboxes.length;
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                const checkedCount = document.querySelectorAll('.progress-check:checked').length;
+                const progressPercent = (checkedCount / totalCheckboxes) * 100;
+                
+                progressBar.style.height = `${progressPercent}%`;
+                progressText.textContent = `${Math.round(progressPercent)}% Completed`;
+            });
+        });
+    </script>
+</body>
+</html>

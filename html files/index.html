@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url('images/anm.jpeg');
+      background-size: cover;
+      background-position: center;
+     
+    }
+    .container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: transparent;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      width: 300px;
+    }
+
+    .feed-form {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .feed-form input {
+      height: 54px;
+      border-radius: 5px;
+      background: white;
+      margin-bottom: 5px;
+      border: 1px solid #ccc;
+      padding: 0 20px;
+      font-weight: 300;
+      font-size: 14px;
+      color: #4B4B4B;
+    }
+
+    .button_submit:hover, .feed-form input:hover, .admin-button:hover {
+      transform: scale(1.009);
+      box-shadow: 0px 0px 3px 0px #212529;
+    }
+
+    .button_submit, .admin-button {
+      width: 100%;
+      height: 54px;
+      font-size: 14px;
+      color: black;
+      background: #a8997c;
+      border-radius: 5px;
+      border: none;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    .admin-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: auto;
+      height: 40px;
+      padding: 0 20px;
+      font-size: 14px;
+    }
+
+    .admin-login-card {
+      position: absolute;
+      top: 70px; /* Positioned below the admin button */
+      right: 20px; /* Aligned with the admin button */
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      display: none;
+      flex-direction: column;
+      z-index: 1000; /* Ensures visibility */
+    }
+
+    .admin-login-card input {
+      height: 40px;
+      border-radius: 5px;
+      background: white;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      padding: 0 10px;
+      font-size: 14px;
+      color: #4B4B4B;
+    }
+
+    .admin-login-card button {
+      height: 40px;
+      font-size: 14px;
+      color: white;
+      background: #a8997c;
+      border-radius: 5px;
+      border: none;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <button class="admin-button" ondblclick="hideAdminLogin()" onclick="toggleAdminLogin()">Admin</button>
+  <div class="admin-login-card" id="adminLoginCard">
+    <input type="text" id="adminUsername" placeholder="Admin Username">
+    <input type="password" id="adminPassword" placeholder="Admin Password">
+    <button onclick="validateAdminLogin()">Login</button>
+  </div>
+  <div class="form-container">
+    <form id="consultation-form" class="feed-form" action="people.jsp">
+      <input type="text" name="text1" id="text1" placeholder="Enter name">
+       <input type="text" name="text2" id="text2" placeholder="Enter number">
+      <input type="text" name="text3" id="text3" placeholder="Enter email">
+      <button class="button_submit">Register</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  function toggleAdminLogin() {
+    const adminLoginCard = document.getElementById('adminLoginCard');
+    if (adminLoginCard.style.display === 'flex') {
+      adminLoginCard.style.display = 'none';
+    } else {
+      adminLoginCard.style.display = 'flex';
+    }
+  }
+
+  function hideAdminLogin() {
+    const adminLoginCard = document.getElementById('adminLoginCard');
+    adminLoginCard.style.display = 'none';
+  }
+
+  function validateAdminLogin() {
+    const username = document.getElementById('adminUsername').value;
+    const password = document.getElementById('adminPassword').value;
+
+    const validUsername = 'admin';
+    const validPassword = 'somesh';
+
+    if (username === validUsername && password === validPassword) {
+      alert('Admin login successful!');
+      document.getElementById('adminLoginCard').style.display = 'none';
+      window.location.href = 'admin.html'; // Redirect to a new page
+    } else {
+      alert('Invalid username or password!');
+    }
+  }
+  
+</script>
+
+</body>
+</html>

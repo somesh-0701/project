@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natural Disaster Information</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* CSS code */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+            background: url('images/beach-church.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            height: 100vh;
+            overflow: hidden;
+            
+              position: relative;
+    transform: translateX(0);
+    transition: transform 1s ease-in-out;
+    }
+    body.slide {
+    transform: translateX(-100%);
+}
+        
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-top: 2rem;
+        }
+
+        p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .button {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 4rem; /* Increased spacing below the buttons */
+        }
+
+        .button button {
+            background-color: #c2b89c;
+            border: none;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 25px;
+            color: black;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .button button:hover {
+            background-color: #a89c80;
+        }
+
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem; /* Increased spacing between cards */
+            margin-top: 8rem; /* Adjust this value to move cards downward */
+            margin-bottom: 10rem; /* Push the cards further toward the bottom */
+        }
+
+        .card {
+            width: 200px;
+            height: 200px;
+            background-color: #a8997c;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .card img {
+            width: 50px;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: white;
+        }
+
+        .footer {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <script>
+         function redirectPage() {
+            document.body.classList.add('slide');
+            setTimeout(function() {
+                window.location.href = 'checklist.html'; // Replace with your next page URL
+            }, 1000); // Matches the animation duration
+        }
+        </script>
+    <header>
+        <h1>How Can I Survive?</h1>
+        <p>"Preparedness is survival's best ally. Stay ready, stay safe."</p>
+        <div class="button" onclick="window.location.href='display.jsp';">
+            <button>SHELTORS,FOOD </button>
+        </div>
+            <div class="button" onclick="window.location.href='checklist.html';">
+            <button>ESSENTIALS</button>
+        </div>
+    </header>
+
+    <section class="cards-container">
+        <div class="card" onclick="window.location.href='flood.html';">
+            <img src="https://img.icons8.com/ios-filled/50/FFFFFF/water.png" alt="Flood Icon">
+            <h3>FLOOD</h3>
+        </div>
+        <div class="card"onclick="window.location.href='tsunami.html';">
+            <img src="https://img.icons8.com/ios-filled/50/FFFFFF/tsunami.png" alt="Tsunami Icon">
+            <h3>TSUNAMI</h3>
+        </div>
+        <div class="card"onclick="window.location.href='cyclone.html';">
+            <img src="https://img.icons8.com/ios-filled/50/FFFFFF/storm.png" alt="Cyclone Icon">
+            <h3>CYCLONE</h3>
+        </div>
+        <div class="card" onclick="window.location.href='landslide.html';">
+            <img src="https://img.icons8.com/ios-filled/50/FFFFFF/mountain.png" alt="Landslide Icon">
+            <h3>LANDSLIDES</h3>
+        </div>
+    </section>
+
+   
+</body>
+</html>
