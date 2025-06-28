@@ -1,0 +1,5 @@
+services:
+  - type: web
+    name: my-jsp-app
+    env: docker
+    plan: free
